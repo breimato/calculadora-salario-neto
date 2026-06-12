@@ -1,8 +1,22 @@
+# Dependencias y build
 node_modules/
 dist/
-.env.deploy.local
+
+# Variables de entorno con secretos (nunca commitear)
+.env
 .env.local
+.env.deploy.local
 .env*.local
+
+# .env.deploy.example es plantilla sin contraseña — sí se puede versionar
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# IDE y sistema
 .idea/
+.vscode/
 *.log
 .DS_Store
+Thumbs.db
