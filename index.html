@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var storedTheme = localStorage.getItem('salario-neto-theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme =
+          storedTheme === 'dark' || storedTheme === 'light'
+            ? storedTheme
+            : prefersDark
+              ? 'dark'
+              : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora salario neto España — IRPF y Seguridad Social</title>
+    <meta
+      name="description"
+      content="Calcula tu salario neto en España con IRPF, cotizaciones a la Seguridad Social y retenciones. Estima nómina mensual y anual según tu bruto y situación personal."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Calculadora salario neto España" />
+    <meta
+      property="og:description"
+      content="Estima tu salario neto con IRPF y cotizaciones a la Seguridad Social en España."
+    />
+    <meta property="og:locale" content="es_ES" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Calculadora salario neto España",
+        "description": "Calculadora de salario neto con IRPF y cotizaciones a la Seguridad Social en España",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "es"
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

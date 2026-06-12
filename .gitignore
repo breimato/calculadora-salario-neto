@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env.deploy.local
+.env.local
+.env*.local
+.idea/
+*.log
+.DS_Store

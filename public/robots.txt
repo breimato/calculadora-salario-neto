@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://breimato.es/salario-neto/sitemap.xml
