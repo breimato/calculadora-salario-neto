@@ -475,10 +475,42 @@ a {
 
 .app-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-md);
   max-width: 960px;
   margin: 0 auto;
   padding: var(--space-md) var(--space-md) 0;
+}
+
+.finance-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.finance-nav__link {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.finance-nav__link:hover {
+  color: var(--color-text);
+  border-color: var(--color-input-hover-border);
+}
+
+.finance-nav__link[aria-current='page'] {
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .theme-toggle {

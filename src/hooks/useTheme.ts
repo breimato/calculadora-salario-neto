@@ -2,15 +2,18 @@ import { useCallback, useEffect, useState } from 'react'
 
 export type Theme = 'light' | 'dark'
 
-const THEME_STORAGE_KEY = 'salario-neto-theme'
+const THEME_STORAGE_KEY = 'finanzas-theme'
+const LEGACY_THEME_KEYS = [
+  'salario-neto-theme',
+  'hipotecas-theme',
+  'calculadora-interes-compuesto-theme',
+]
 
 function getStoredTheme(): Theme | null {
-  const storedTheme = localStorage.getItem(THEME_STORAGE_KEY)
-
-  if (storedTheme === 'light' || storedTheme === 'dark') {
-    return storedTheme
+  for (const key of [THEME_STORAGE_KEY, ...LEGACY_THEME_KEYS]) {
+    const storedTheme = localStorage.getItem(key)
+    if (storedTheme === 'light' || storedTheme === 'dark') return storedTheme
   }
-
   return null
 }
 
@@ -20,11 +23,7 @@ function getSystemTheme(): Theme {
 
 function getInitialTheme(): Theme {
   const documentTheme = document.documentElement.getAttribute('data-theme')
-
-  if (documentTheme === 'light' || documentTheme === 'dark') {
-    return documentTheme
-  }
-
+  if (documentTheme === 'light' || documentTheme === 'dark') return documentTheme
   return getStoredTheme() ?? getSystemTheme()
 }
 

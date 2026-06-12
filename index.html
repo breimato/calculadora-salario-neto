@@ -4,14 +4,22 @@
     <meta charset="UTF-8" />
     <script>
       (function () {
-        var storedTheme = localStorage.getItem('salario-neto-theme');
+        var keys = [
+          'finanzas-theme',
+          'salario-neto-theme',
+          'hipotecas-theme',
+          'calculadora-interes-compuesto-theme',
+        ];
+        var storedTheme = null;
+        for (var i = 0; i < keys.length; i++) {
+          var value = localStorage.getItem(keys[i]);
+          if (value === 'dark' || value === 'light') {
+            storedTheme = value;
+            break;
+          }
+        }
         var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var theme =
-          storedTheme === 'dark' || storedTheme === 'light'
-            ? storedTheme
-            : prefersDark
-              ? 'dark'
-              : 'light';
+        var theme = storedTheme || (prefersDark ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>

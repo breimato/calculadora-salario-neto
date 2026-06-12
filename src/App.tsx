@@ -1,4 +1,5 @@
 import { SalaryCalculator } from './components/calculator/SalaryCalculator.tsx'
+import { FinanceNav } from './components/ui/FinanceNav.tsx'
 import { ThemeToggle } from './components/ui/ThemeToggle.tsx'
 
 export default function App() {
@@ -8,6 +9,7 @@ export default function App() {
         Saltar al contenido principal
       </a>
       <header className="app-header">
+        <FinanceNav currentServiceId="salario-neto" />
         <ThemeToggle />
       </header>
       <main id="main-content" className="app-main">
