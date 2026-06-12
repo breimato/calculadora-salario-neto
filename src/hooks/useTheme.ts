@@ -9,10 +9,20 @@ const LEGACY_THEME_KEYS = [
   'calculadora-interes-compuesto-theme',
 ]
 
-function getStoredTheme(): Theme | null {
-  for (const key of [THEME_STORAGE_KEY, ...LEGACY_THEME_KEYS]) {
+function readStoredTheme(key: string): Theme | null {
+  try {
     const storedTheme = localStorage.getItem(key)
     if (storedTheme === 'light' || storedTheme === 'dark') return storedTheme
+  } catch {
+    return null
+  }
+  return null
+}
+
+function getStoredTheme(): Theme | null {
+  for (const key of [THEME_STORAGE_KEY, ...LEGACY_THEME_KEYS]) {
+    const storedTheme = readStoredTheme(key)
+    if (storedTheme) return storedTheme
   }
   return null
 }
@@ -29,7 +39,11 @@ function getInitialTheme(): Theme {
 
 function applyTheme(theme: Theme) {
   document.documentElement.setAttribute('data-theme', theme)
-  localStorage.setItem(THEME_STORAGE_KEY, theme)
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme)
+  } catch {
+    // Safari modo privado u otros entornos sin almacenamiento persistente
+  }
 }
 
 export function useTheme() {
